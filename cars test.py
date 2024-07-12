@@ -14,8 +14,9 @@ from bs4 import BeautifulSoup
 import time
 import math
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 import re
 import pandas as pd
 from openpyxl.styles import PatternFill
@@ -50,10 +51,8 @@ sellerothercars_list = []
 link_list = []
 
 # launched automated browser
-import pkg_resources
-chromeOptions = webdriver.ChromeOptions()
-driver_path = pkg_resources.resource_filename(__name__, "chromedriver.exe")
-driver = webdriver.Chrome(executable_path=driver_path, options=chromeOptions)
+chrome_options = Options()
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 
 driver.maximize_window()
 
