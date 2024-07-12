@@ -52,7 +52,10 @@ link_list = []
 
 # launched automated browser
 chrome_options = Options()
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+chrome_driver_version = '126.0.6478.127'  # Replace with the correct version
+
+# Initialize the WebDriver with the specified ChromeDriver version
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager(version=chrome_driver_version).install()), options=chrome_options)
 
 driver.maximize_window()
 
